@@ -1,0 +1,130 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:891377054079:task-definition/lks-td-leantime:3",
+    "containerDefinitions": [
+        {
+            "name": "leantime-app",
+            "image": "leantime/leantime:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "leantime-app-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "LEAN_DB_USER",
+                    "value": "admin"
+                },
+                {
+                    "name": "LEAN_DB_HOST",
+                    "value": "lks-project-management-cluster.crawwu28qp3z.us-east-1.rds.amazonaws.com"
+                },
+                {
+                    "name": "LEAN_DB_NAME",
+                    "value": "mysql_db"
+                },
+                {
+                    "name": "LEAN_DB_PASSWORD",
+                    "value": "admin123"
+                }
+            ],
+            "environmentFiles": [],
+            "mountPoints": [
+                {
+                    "sourceVolume": "vol-userfiles",
+                    "containerPath": "/var/www/html/public/userfiles",
+                    "readOnly": false
+                }
+            ],
+            "volumesFrom": [],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/lks-td-leantime",
+                    "awslogs-create-group": "true",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "lks-td-leantime",
+    "taskRoleArn": "arn:aws:iam::891377054079:role/LabRole",
+    "executionRoleArn": "arn:aws:iam::891377054079:role/LabRole",
+    "networkMode": "awsvpc",
+    "revision": 3,
+    "volumes": [
+        {
+            "name": "vol-userfiles",
+            "efsVolumeConfiguration": {
+                "fileSystemId": "fs-0781b0b824f173e5c",
+                "rootDirectory": "/",
+                "transitEncryption": "ENABLED",
+                "authorizationConfig": {
+                    "accessPointId": "fsap-0c1f3d094c1677f5c",
+                    "iam": "DISABLED"
+                }
+            }
+        }
+    ],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "ecs.capability.efsAuth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "ecs.capability.efs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.25"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "MANAGED_INSTANCES",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2026-03-30T21:23:24.843Z",
+    "registeredBy": "arn:aws:sts::891377054079:assumed-role/voclabs/user4298200=13123_-_Virza_Rizky",
+    "enableFaultInjection": false,
+    "tags": []
+}

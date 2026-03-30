@@ -1,0 +1,33 @@
+# Source Config Example : https://gatus.io/docs/import-yaml-configuration
+
+alerting:
+  github:
+    repository: VirzaPixel/lks-gatus
+    token: "${GITHUB_TOKEN}"
+
+endpoints:
+  # Leantime App Url
+  - name: Leantime App
+    url: "${ALB_ENDPOINT}:80/"
+    interval: 30s
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 300"
+    alerts:
+      - type: github
+        failure-threshold: 3 
+        success-threshold: 5 
+        send-on-resolved: true
+      
+  # Gatus App Url
+  - name: Gatus App
+    url: "${ALB_ENDPOINT}:8080/"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 500"
+    alerts:
+      - type: github
+        failure-threshold: 3 
+        success-threshold: 5 
+        send-on-resolved: true
