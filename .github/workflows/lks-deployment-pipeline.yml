@@ -21,7 +21,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_SECRET_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-          aws-region: ${{ secrets.AWS_REGION }}
       - name: Deploy ECS Task Definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
@@ -42,7 +41,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_SECRET_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-          aws-region: ${{ secrets.AWS_REGION }}
 
       # Inject Token
       - name: Inject token to config.yaml
