@@ -1,4 +1,4 @@
-name: Github Actions Deployment Leantime and Gatus Apps
+name: Github Actions Deployment Leantime and Gatus App
 
 env:
   AWS_REGION: us-east-1
@@ -28,7 +28,7 @@ jobs:
           task-definition: leantime/task-definition.json
           service: leantime-service
           cluster: lks-oss-cluster
-          wait-for-service-stability: true
+          wait-for-service-stability: false
 
   Deploy-Gatus:
     name: Deploy Gatus App
@@ -70,4 +70,4 @@ jobs:
           task-definition: gatus/task-definition.json
           service: gatus-service
           cluster: lks-oss-cluster
-          wait-for-service-stability: true
+          wait-for-service-stability: false
