@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:891377054079:task-definition/lks-td-leantime:10",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:891377054079:task-definition/lks-td-leantime:14",
     "containerDefinitions": [
         {
             "name": "leantime-app",
@@ -15,24 +15,7 @@
                 }
             ],
             "essential": true,
-            "environment": [
-                {
-                    "name": "LEAN_DB_USER",
-                    "value": "admin"
-                },
-                {
-                    "name": "LEAN_DB_HOST",
-                    "value": "lks-project-management-cluster.crawwu28qp3z.us-east-1.rds.amazonaws.com"
-                },
-                {
-                    "name": "LEAN_DB_NAME",
-                    "value": "mysql_db"
-                },
-                {
-                    "name": "LEAN_DB_PASSWORD",
-                    "value": "admin123"
-                }
-            ],
+            "environment": [],
             "mountPoints": [
                 {
                     "sourceVolume": "vol-userfiles",
@@ -41,6 +24,24 @@
                 }
             ],
             "volumesFrom": [],
+            "secrets": [
+                {
+                    "name": "LEAN_DB_HOST",
+                    "valueFrom": "arn:aws:ssm:us-east-1:891377054079:parameter/lks/db/host"
+                },
+                {
+                    "name": "LEAN_DB_NAME",
+                    "valueFrom": "arn:aws:ssm:us-east-1:891377054079:parameter/lks/db/name"
+                },
+                {
+                    "name": "LEAN_DB_PASSWORD",
+                    "valueFrom": "arn:aws:ssm:us-east-1:891377054079:parameter/lks/db/password"
+                },
+                {
+                    "name": "LEAN_DB_USER",
+                    "valueFrom": "arn:aws:ssm:us-east-1:891377054079:parameter/lks/db/username"
+                }
+            ],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -48,7 +49,8 @@
                     "awslogs-create-group": "true",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
-                }
+                },
+                "secretOptions": []
             },
             "systemControls": []
         }
@@ -57,7 +59,7 @@
     "taskRoleArn": "arn:aws:iam::891377054079:role/LabRole",
     "executionRoleArn": "arn:aws:iam::891377054079:role/LabRole",
     "networkMode": "awsvpc",
-    "revision": 10,
+    "revision": 14,
     "volumes": [
         {
             "name": "vol-userfiles",
@@ -96,6 +98,9 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.25"
         },
         {
+            "name": "ecs.capability.secrets.ssm.environment-variables"
+        },
+        {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
         },
         {
@@ -120,7 +125,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2026-03-31T01:25:46.732Z",
+    "registeredAt": "2026-03-31T02:59:48.500Z",
     "registeredBy": "arn:aws:sts::891377054079:assumed-role/voclabs/user4298200=13123_-_Virza_Rizky",
     "tags": []
 }
