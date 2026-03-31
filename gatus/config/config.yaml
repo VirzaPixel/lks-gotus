@@ -18,16 +18,3 @@ endpoints:
         failure-threshold: 3 
         success-threshold: 5 
         send-on-resolved: true
-      
-  # Gatus App Url
-  - name: Gatus App
-    url: "http://lks-oss-lb-1398809373.us-east-1.elb.amazonaws.com/"
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-      - "[RESPONSE_TIME] < 500"
-    alerts:
-      - type: github
-        failure-threshold: 3 
-        success-threshold: 5 
-        send-on-resolved: true

@@ -48,7 +48,12 @@ jobs:
       - name: Inject token to config.yaml
         run: |
             sed -i "s/\${GITHUB_TOKEN}/${{ secrets.TOKEN }}/g" gatus/config/config.yaml
-            sed -i "s/\${ALB_ENDPOINT}/${{ secrets.ALB_ENDPOINT }}/g" gatus/config/config.yaml
+
+      # check 
+      - name: Check config.yaml
+        run: cat gatus/config/config.yaml
+      - name: Check Directory
+        run: ls gatus/config
 
       # Build Masukan Build command ECR
       - name: Build Gatus Images
