@@ -2,13 +2,13 @@
 
 alerting:
   github:
-    repository: VirzaPixel/lks-gatus
+    repository-url: "https://github.com/VirzaPixel/lks-gatus"
     token: "${GITHUB_TOKEN}"
 
 endpoints:
   # Leantime App Url
   - name: Leantime App
-    url: "${ALB_ENDPOINT}:80/"
+    url: "http://lks-oss-lb-1398809373.us-east-1.elb.amazonaws.com/"
     interval: 30s
     conditions:
       - "[STATUS] == 200"
@@ -21,7 +21,7 @@ endpoints:
       
   # Gatus App Url
   - name: Gatus App
-    url: "${ALB_ENDPOINT}:8080/"
+    url: "http://lks-oss-lb-1398809373.us-east-1.elb.amazonaws.com/"
     interval: 60s
     conditions:
       - "[STATUS] == 200"
