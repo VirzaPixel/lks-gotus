@@ -176,6 +176,5 @@
     },
     "registeredAt": "2026-04-01T13:00:15.551Z",
     "registeredBy": "arn:aws:sts::891377054079:assumed-role/voclabs/user4298200=13123_-_Virza_Rizky",
-    "enableFaultInjection": false,
     "tags": []
 }
