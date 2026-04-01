@@ -47,7 +47,7 @@ jobs:
       # Inject Token
       - name: Inject token to config.yaml
         run: |
-            sed -i "s|/token: .*|token: ${{ secrets.TOKEN }}|" ./config/config.yaml
+            sed -i "s|token: .*|token: ${{ secrets.TOKEN }}|" ./config/config.yaml
 
       # check 
       - name: Check config.yaml
