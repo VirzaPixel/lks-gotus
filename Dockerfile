@@ -1,7 +1,22 @@
-FROM twinproduction/gatus:latest
+# Build the go application into a binary
+FROM golang:alpine AS builder
+RUN apk --update add ca-certificates
+WORKDIR /app
+COPY . ./
+RUN go mod tidy
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o gatus .
 
-COPY gatus/config/config.yaml /config/config.yaml
+# Run Tests inside docker image if you don't have a configured go environment
+#RUN apk update && apk add --virtual build-dependencies build-base gcc
+#RUN go test ./... -mod vendor
 
-ENV GATUS_CONFIG_PATH=/config/config.yaml
-
-EXPOSE 8080
+# Run the binary on an empty container
+FROM scratch
+COPY --from=builder /app/gatus .
+COPY --from=builder /app/config/config.yaml gatus/config/config.yaml
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+ENV GATUS_CONFIG_PATH=""
+ENV GATUS_LOG_LEVEL="INFO"
+ENV PORT="8080"
+EXPOSE ${PORT}
+ENTRYPOINT ["/gatus"]
