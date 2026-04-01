@@ -18,3 +18,4 @@ endpoints:
         failure-threshold: 3 
         success-threshold: 5 
         send-on-resolved: true
+        Description: "Down wok"
