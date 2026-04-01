@@ -28,7 +28,7 @@ jobs:
           task-definition: leantime/task-definition.json
           service: leantime-service
           cluster: lks-oss-cluster
-          wait-for-service-stability: false
+          wait-for-service-stability: true
 
   Deploy-Gatus:
     name: Deploy Gatus App
@@ -70,4 +70,4 @@ jobs:
           task-definition: gatus/task-definition.json
           service: gatus-service
           cluster: lks-oss-cluster
-          wait-for-service-stability: false
+          wait-for-service-stability: true
