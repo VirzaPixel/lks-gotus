@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:891377054079:task-definition/lks-td-gatus:18",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:891377054079:task-definition/lks-td-gatus:23",
     "containerDefinitions": [
         {
             "name": "gatus-app",
@@ -37,7 +37,7 @@
     "taskRoleArn": "arn:aws:iam::891377054079:role/LabRole",
     "executionRoleArn": "arn:aws:iam::891377054079:role/LabRole",
     "networkMode": "awsvpc",
-    "revision": 18,
+    "revision": 23,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -72,8 +72,8 @@
     "placementConstraints": [],
     "compatibilities": [
         "EC2",
-        "MANAGED_INSTANCES",
-        "FARGATE"
+        "FARGATE",
+        "MANAGED_INSTANCES"
     ],
     "requiresCompatibilities": [
         "FARGATE"
@@ -84,7 +84,8 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2026-04-01T06:49:51.582Z",
+    "registeredAt": "2026-04-01T13:06:03.193Z",
     "registeredBy": "arn:aws:sts::891377054079:assumed-role/voclabs/user4298200=13123_-_Virza_Rizky",
+    "enableFaultInjection": false,
     "tags": []
 }

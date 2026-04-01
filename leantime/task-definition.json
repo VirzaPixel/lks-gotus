@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:891377054079:task-definition/lks-td-leantime:32",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:891377054079:task-definition/lks-td-leantime:38",
     "containerDefinitions": [
         {
             "name": "leantime-app",
@@ -84,16 +84,16 @@
     "taskRoleArn": "arn:aws:iam::891377054079:role/LabRole",
     "executionRoleArn": "arn:aws:iam::891377054079:role/LabRole",
     "networkMode": "awsvpc",
-    "revision": 32,
+    "revision": 38,
     "volumes": [
         {
             "name": "vol-pub-userfiles",
             "efsVolumeConfiguration": {
-                "fileSystemId": "fs-0b5739536d9d2cc97",
+                "fileSystemId": "fs-0c60456e2dde0d13a",
                 "rootDirectory": "/",
                 "transitEncryption": "ENABLED",
                 "authorizationConfig": {
-                    "accessPointId": "fsap-06d0d046e01106f5b",
+                    "accessPointId": "fsap-034a527bd32b7433a",
                     "iam": "DISABLED"
                 }
             }
@@ -101,11 +101,11 @@
         {
             "name": "vol-userfiles",
             "efsVolumeConfiguration": {
-                "fileSystemId": "fs-0b5739536d9d2cc97",
+                "fileSystemId": "fs-0c60456e2dde0d13a",
                 "rootDirectory": "/",
                 "transitEncryption": "ENABLED",
                 "authorizationConfig": {
-                    "accessPointId": "fsap-0ac1f965eff51c2bb",
+                    "accessPointId": "fsap-09e7e5bb1ca03f77f",
                     "iam": "DISABLED"
                 }
             }
@@ -113,11 +113,11 @@
         {
             "name": "vol-plugins",
             "efsVolumeConfiguration": {
-                "fileSystemId": "fs-0b5739536d9d2cc97",
+                "fileSystemId": "fs-0c60456e2dde0d13a",
                 "rootDirectory": "/",
                 "transitEncryption": "ENABLED",
                 "authorizationConfig": {
-                    "accessPointId": "fsap-003760eeefe44bae2",
+                    "accessPointId": "fsap-0e6adb33921113b69",
                     "iam": "DISABLED"
                 }
             }
@@ -162,8 +162,8 @@
     "placementConstraints": [],
     "compatibilities": [
         "EC2",
-        "FARGATE",
-        "MANAGED_INSTANCES"
+        "MANAGED_INSTANCES",
+        "FARGATE"
     ],
     "requiresCompatibilities": [
         "FARGATE"
@@ -174,7 +174,8 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2026-04-01T06:56:00.664Z",
+    "registeredAt": "2026-04-01T13:00:15.551Z",
     "registeredBy": "arn:aws:sts::891377054079:assumed-role/voclabs/user4298200=13123_-_Virza_Rizky",
+    "enableFaultInjection": false,
     "tags": []
 }
