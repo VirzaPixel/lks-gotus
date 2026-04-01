@@ -2,9 +2,9 @@
 
 alerting:
   github:
-    repository-url: "https://github.com/VirzaPixel/lks-gatus"
+    -repository-url: "https://github.com/VirzaPixel/lks-gotus"
     token: ""
-    
+
 endpoints:
   - name: Leantime
     url: "http://lks-oss-lb-1535611571.us-east-1.elb.amazonaws.com/"
