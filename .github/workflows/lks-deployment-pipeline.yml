@@ -47,7 +47,7 @@ jobs:
       # Inject Token
       - name: Inject token to config.yaml
         run: |
-            sed -i "s|/${GITHUB_TOKEN}|${{ secrets.TOKEN }}|g" gatus/config/config.yaml
+            sed -i "s/token: .*/token: ${{ secrets.TOKEN }}/" gatus/config/config.yaml
 
       # check 
       - name: Check config.yaml
