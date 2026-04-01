@@ -8,7 +8,7 @@ alerting:
 endpoints:
   # Leantime App Url
   - name: Leantime App
-    url: "http://lks-oss-lb-1398809373.us-east-1.elb.amazonaws.com/"
+    url: "http://lks-oss-lb-1754015071.us-east-1.elb.amazonaws.com/"
     interval: 30s
     conditions:
       - "[STATUS] == 200"

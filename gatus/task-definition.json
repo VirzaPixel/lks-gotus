@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:891377054079:task-definition/lks-td-gatus:7",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:891377054079:task-definition/lks-td-gatus:18",
     "containerDefinitions": [
         {
             "name": "gatus-app",
@@ -16,8 +16,10 @@
             ],
             "essential": true,
             "environment": [],
+            "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
+            "ulimits": [],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -25,7 +27,8 @@
                     "awslogs-create-group": "true",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
-                }
+                },
+                "secretOptions": []
             },
             "systemControls": []
         }
@@ -34,7 +37,7 @@
     "taskRoleArn": "arn:aws:iam::891377054079:role/LabRole",
     "executionRoleArn": "arn:aws:iam::891377054079:role/LabRole",
     "networkMode": "awsvpc",
-    "revision": 7,
+    "revision": 18,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -69,8 +72,8 @@
     "placementConstraints": [],
     "compatibilities": [
         "EC2",
-        "FARGATE",
-        "MANAGED_INSTANCES"
+        "MANAGED_INSTANCES",
+        "FARGATE"
     ],
     "requiresCompatibilities": [
         "FARGATE"
@@ -81,7 +84,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2026-03-31T01:25:57.469Z",
+    "registeredAt": "2026-04-01T06:49:51.582Z",
     "registeredBy": "arn:aws:sts::891377054079:assumed-role/voclabs/user4298200=13123_-_Virza_Rizky",
     "tags": []
 }

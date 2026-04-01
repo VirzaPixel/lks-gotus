@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:891377054079:task-definition/lks-td-leantime:22",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:891377054079:task-definition/lks-td-leantime:32",
     "containerDefinitions": [
         {
             "name": "leantime-app",
@@ -7,9 +7,9 @@
             "cpu": 0,
             "portMappings": [
                 {
-                    "name": "leantime-app-80-tcp",
-                    "containerPort": 80,
-                    "hostPort": 80,
+                    "name": "leantime-app-8080-tcp",
+                    "containerPort": 8080,
+                    "hostPort": 8080,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 }
@@ -17,31 +17,28 @@
             "essential": true,
             "environment": [
                 {
-                    "name": "LEAN_DB_USER",
-                    "value": "admin"
+                    "name": "LEAN_SITENAME",
+                    "value": "LKS Leantime"
                 },
                 {
-                    "name": "LEAN_DB_HOST",
-                    "value": "lks-project-management-cluster.crawwu28qp3z.us-east-1.rds.amazonaws.com"
+                    "name": "LEAN_DEFAULT_TIMEZONE",
+                    "value": "Asia/Jakarta"
                 },
                 {
-                    "name": "LEAN_DB_NAME",
-                    "value": "mysql_db"
-                },
-                {
-                    "name": "LEAN_DB_PASSWORD",
-                    "value": "admin123"
+                    "name": "LEAN_PORT",
+                    "value": "8080"
                 }
             ],
+            "environmentFiles": [],
             "mountPoints": [
-                {
-                    "sourceVolume": "vol-userfiles",
-                    "containerPath": "/var/www/html/userfiles",
-                    "readOnly": false
-                },
                 {
                     "sourceVolume": "vol-pub-userfiles",
                     "containerPath": "/var/www/html/public/userfiles",
+                    "readOnly": false
+                },
+                {
+                    "sourceVolume": "vol-userfiles",
+                    "containerPath": "/var/www/html/userfiles",
                     "readOnly": false
                 },
                 {
@@ -51,6 +48,25 @@
                 }
             ],
             "volumesFrom": [],
+            "secrets": [
+                {
+                    "name": "LEAN_DB_HOST",
+                    "valueFrom": "arn:aws:ssm:us-east-1:891377054079:parameter/lks/db/host"
+                },
+                {
+                    "name": "LEAN_DB_NAME",
+                    "valueFrom": "arn:aws:ssm:us-east-1:891377054079:parameter/lks/db/name"
+                },
+                {
+                    "name": "LEAN_DB_PASSWORD",
+                    "valueFrom": "arn:aws:ssm:us-east-1:891377054079:parameter/lks/db/password"
+                },
+                {
+                    "name": "LEAN_DB_USER",
+                    "valueFrom": "arn:aws:ssm:us-east-1:891377054079:parameter/lks/db/username"
+                }
+            ],
+            "ulimits": [],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -68,28 +84,28 @@
     "taskRoleArn": "arn:aws:iam::891377054079:role/LabRole",
     "executionRoleArn": "arn:aws:iam::891377054079:role/LabRole",
     "networkMode": "awsvpc",
-    "revision": 22,
+    "revision": 32,
     "volumes": [
         {
-            "name": "vol-userfiles",
+            "name": "vol-pub-userfiles",
             "efsVolumeConfiguration": {
-                "fileSystemId": "fs-0781b0b824f173e5c",
+                "fileSystemId": "fs-0b5739536d9d2cc97",
                 "rootDirectory": "/",
                 "transitEncryption": "ENABLED",
                 "authorizationConfig": {
-                    "accessPointId": "fsap-0c1f3d094c1677f5c",
+                    "accessPointId": "fsap-06d0d046e01106f5b",
                     "iam": "DISABLED"
                 }
             }
         },
         {
-            "name": "vol-pub-userfiles",
+            "name": "vol-userfiles",
             "efsVolumeConfiguration": {
-                "fileSystemId": "fs-0781b0b824f173e5c",
+                "fileSystemId": "fs-0b5739536d9d2cc97",
                 "rootDirectory": "/",
                 "transitEncryption": "ENABLED",
                 "authorizationConfig": {
-                    "accessPointId": "fsap-071fea29480ecdba8",
+                    "accessPointId": "fsap-0ac1f965eff51c2bb",
                     "iam": "DISABLED"
                 }
             }
@@ -97,11 +113,11 @@
         {
             "name": "vol-plugins",
             "efsVolumeConfiguration": {
-                "fileSystemId": "fs-0781b0b824f173e5c",
+                "fileSystemId": "fs-0b5739536d9d2cc97",
                 "rootDirectory": "/",
                 "transitEncryption": "ENABLED",
                 "authorizationConfig": {
-                    "accessPointId": "fsap-054f231ae0580860f",
+                    "accessPointId": "fsap-003760eeefe44bae2",
                     "iam": "DISABLED"
                 }
             }
@@ -131,6 +147,9 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.25"
         },
         {
+            "name": "ecs.capability.secrets.ssm.environment-variables"
+        },
+        {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
         },
         {
@@ -155,7 +174,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2026-03-31T04:25:05.251Z",
+    "registeredAt": "2026-04-01T06:56:00.664Z",
     "registeredBy": "arn:aws:sts::891377054079:assumed-role/voclabs/user4298200=13123_-_Virza_Rizky",
     "tags": []
 }
