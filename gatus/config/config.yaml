@@ -3,7 +3,7 @@
 alerting:
   github:
     -repository-url: "https://github.com/VirzaPixel/lks-gotus"
-    token: ""
+    token: "${GITHUB_TOKEN}"
 
 endpoints:
   - name: Leantime
