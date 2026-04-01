@@ -1,4 +1,4 @@
-name: Github Actions Deployment Leantime and Gatus Apps
+name: Github Actions Deployment Leantime and Gatus App
 
 env:
   AWS_REGION: us-east-1
